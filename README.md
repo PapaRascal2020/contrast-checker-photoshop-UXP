@@ -10,6 +10,5 @@ You give it a foreground and background color in HEX and click the "> run test" 
 You can load this plugin directly in Photoshop by using the UXP Developer Tools application. Once started, click "Add Plugin...", and navigate to the "manifest.json" file in this folder. Then click the ••• button next to the corresponding entry in the developer tools and click "Load". Switch over to Photoshop, and the plugin's panel will be running.
 
 ## Screenshots
-![Alt text](/Screenshot Validated & Message.png?raw=true "Success and Message Box")
-![Alt text](/Screenshot Part Failed.png?raw=true "Part Failed Validation")
-![Alt text](/Screenshot Failed.png?raw=true "Failed Validation")
+
+Inside the root directory
