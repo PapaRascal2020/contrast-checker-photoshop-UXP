@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery-2.0.2.min.js"></script>   
+  <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    padding: 0 16px;
+  }
+  .result-indicator
+  {
+    width: 20px; 
+    height: 20px; 
+    border: 2px solid #cccccc; 
+    border-radius: 50%;
+  }
+
+  #results {
+    padding: 10px;
+  }
+  #results > div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 90%;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  #color-pickers {
+    padding: 10px;
+  }
+
+  #color-pickers > div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 90%;
+  }
+
+  #color-pickers > div > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #color-pickers > div > div > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  #color-pickers input {
+    width: 60px;
+    margin-top: -2px;
+  }
+
+  #color-pickers .picker-preview{
+    width: 15px; 
+    height: 15px; 
+    background-color: #ffffff; 
+    border: 1px solid #999999; 
+    border-radius: 0;
+    margin-left: 5px;
+  }
+
+  #dialog form {
+    width: 360px;
+  }
+
+  #dialog .h1 {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #dialog .icon {
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+  }
+
+</style>
+<body>
+  <sp-body>
+    <section>
+      <div style="text-align:center; font-size: 105%;">
+        <p><strong>Compare</strong></p>
+      </div>
+    </section> 
+    <section id="color-pickers">
+        <div>
+          <div>Color: </div>
+          <div class="color-widget">
+            <div>#<input type="text" maxlength="6" id="fc" value="000000" /></div>
+            <div class="picker-preview" id="forepicker"></div>
+          </div>
+        </div>
+        <div>
+          <div>On: </div>
+          <div class="color-widget">
+            <div>#<input type="text" maxlength="6" id="bc" value="FFFFFF" /></div>
+            <div class="picker-preview" id="backpicker"></div>
+          </div>
+        </div>  
+    </section>
+    <div style="text-align:center;">
+      <center><button id="btnPopulate">> Run Test</button></center>
+    </div>
+    </section>
+    <hr />
+    <section>
+      <div style="text-align:center; font-size: 105%;">
+        <p><strong>Test results</strong></p>
+      </div>
+    </section> 
+    <section id="results">
+        <div>
+            <div>AA (Small)</div>
+            <div class="result-indicator" id="AASmall"></div>
+        </div>
+        <div>
+            <div>AAA (Small)</div>
+            <div class="result-indicator" id="AAASmall"></div>
+        </div>
+        <div>
+            <div>AA (Large)</div>
+            <div class="result-indicator" id="AALarge"></div>
+        </div>
+        <div>
+            <div>AAA (Large)</div>
+            <div class="result-indicator" id="AAALarge"></div>
+        </div>      
+       <!--<p><small>The readability score is a number between 0 (invisible) and 20 (fully visible) and is an indicator of how well people can distinguish the foreground from the background. This is not the official numbering system but indicates the readability factor as well.</small></p>-->
+    </section>
+    <section>
+    <div style="text-align:center;">
+      <p><strong>Readability Score:</strong> <span id="score">20/20</span></p>
+      <center><button id="information-btn">What's This?</button></center>
+    </div>
+    </section> 
+  </sp-body>
+</body>
+</html>
