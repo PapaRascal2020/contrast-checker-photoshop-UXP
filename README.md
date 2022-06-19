@@ -1,6 +1,9 @@
-# Starter Photoshop Plugin (Vanilla)
+# Photoshop contrast checker
 
-This starter plugin is a good place to get started when developing for Photoshop. It does not rely on any frameworks or build steps -- hence the name "Vanilla".
+This plugin checks the contrast as defined by WCAG2 and gives you a readability score for it.
+
+## How to use the plugin
+You give it a foreground and background color in HEX and click the "> run test" button
 
 ## Loading in Photoshop
 
