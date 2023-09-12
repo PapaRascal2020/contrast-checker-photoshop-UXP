@@ -5,12 +5,12 @@ let bgcolor = "ffffff";
 let readability = 0;
 
 var values = {
-			AAsmall : false,
-			AAlarge : false,
-			AAAsmall : false,
-			AAAlarge : false,
-			readability : 0
-		}
+	AAsmall : false,
+	AAlarge : false,
+	AAAsmall : false,
+	AAAlarge : false,
+	readability : 0
+}
 
 function getForegroundColor() {
     return fgcolor;
@@ -32,7 +32,6 @@ function getAAALarge() {
     return values.AAAlarge ? "00ff00" : "ff0000";
 }
 function getReadability() {
-    //alert(readability);
     return readability.toString();
 }
 
@@ -44,9 +43,9 @@ function hexToRGB(hex) {
 };
 
 function getRGB(value) {
-var color_rgb = hexToRGB(parseInt(value, 16));
-var result_color = [color_rgb[0] / 255, color_rgb[1] / 255, color_rgb[2] / 255];
-return result_color;
+	var color_rgb = hexToRGB(parseInt(value, 16));
+	var result_color = [color_rgb[0] / 255, color_rgb[1] / 255, color_rgb[2] / 255];
+	return result_color;
 }  
 
 
@@ -65,22 +64,28 @@ function getLuminance(ccolor) {
 }
 
 function validateWCAG2Parms(parms) {
-  // return valid WCAG2 parms for isReadable.
-  // If input parms are invalid, return {"level":"AA", "size":"small"}
-  var level, size;
-  parms = parms || {"level":"AA", "size":"small"};
-  level = (parms.level || "AA").toUpperCase();
-  size = (parms.size || "small").toLowerCase();
-  if (level !== "AA" && level !== "AAA") {
-      level = "AA";
-  }
-  if (size !== "small" && size !== "large") {
-      size = "small";
-  }
-  return {"level":level, "size":size};
+	
+	// return valid WCAG2 parms for isReadable.
+	// If input parms are invalid, return {"level":"AA", "size":"small"}
+	
+	var level, size;
+	parms = parms || {"level":"AA", "size":"small"};
+	level = (parms.level || "AA").toUpperCase();
+	size = (parms.size || "small").toLowerCase();
+	
+	if (level !== "AA" && level !== "AAA") {
+		level = "AA";
+	}
+	
+	if (size !== "small" && size !== "large") {
+		size = "small";
+	}
+	
+	return {"level":level, "size":size};
 }
 
 function isReadable (fgcolor, bgcolor, wcag2) {
+	
   readability = (Math.max(getLuminance(fgcolor),getLuminance(bgcolor))+0.05) / (Math.min(getLuminance(fgcolor),getLuminance(bgcolor))+0.05);
 
   var wcag2Parms, out;
@@ -105,27 +110,26 @@ function isReadable (fgcolor, bgcolor, wcag2) {
 
 function validateColors() 
 {
-  values.AAsmall = isReadable(fgcolor, bgcolor, {level: "AA", size:"small"});
+  	values.AAsmall = isReadable(fgcolor, bgcolor, {level: "AA", size:"small"});
 	values.AAlarge = isReadable(fgcolor, bgcolor, {level: "AA", size:"large"});
 	values.AAAsmall = isReadable(fgcolor, bgcolor, {level: "AAA", size:"small"});
 	values.AAAlarge = isReadable(fgcolor, bgcolor, {level: "AAA", size:"large"});
 }
 
 function validate() {
-		$("#AASmall").css("background-color", "#"+getAASmall());
-		$("#AALarge").css("background-color", "#"+getAALarge());
-		$("#AAASmall").css("background-color", "#"+getAAASmall());
-		$("#AAALarge").css("background-color", "#"+getAAALarge());
+	$("#AASmall").css("background-color", "#"+getAASmall());
+	$("#AALarge").css("background-color", "#"+getAALarge());
+	$("#AAASmall").css("background-color", "#"+getAAASmall());
+	$("#AAALarge").css("background-color", "#"+getAAALarge());
     
-    let total = Math.round(getReadability());
-    $("#score").html((total-1)+"/20");
+	let total = Math.round(getReadability());
+	$("#score").html((total-1)+"/20");
 }
 
 $("#btnPopulate").on("click", function()
 {
-  console.log("Pressed");
-  validateColors(fgcolor,bgcolor);
-  validate()
+	validateColors(fgcolor,bgcolor);
+	validate()
 });
 
 $("#fc").on("change", function()
